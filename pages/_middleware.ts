@@ -7,6 +7,7 @@ export default function middleware(req: NextRequest) {
     const token = req.cookies.TRAX_ACCESS_TOKEN;
 
     if (!token) {
+      // We must provide absolute path according to the latest Next.js API
       const url = req.nextUrl.clone();
       url.pathname = "/signin";
       return NextResponse.redirect(url);

@@ -103,12 +103,10 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
     setIsLoading(true);
     const user = await auth(mode, { email, password });
     setIsLoading(false);
-    if (user.status === 401) {
+    if (!user) {
       setIsCredentialsValid(false);
-    } else {
-      setIsCredentialsValid(true);
-      router.push("/");
     }
+    router.push("/");
   }
 };
 
