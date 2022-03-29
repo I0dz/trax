@@ -33,6 +33,8 @@ async function run() {
     create: {
       email: "user@test.com",
       password: bcrypt.hashSync("password", salt),
+      firstName: "Loïc",
+      lastName: "Lodz",
     },
   });
 
