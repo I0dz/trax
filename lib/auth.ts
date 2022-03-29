@@ -26,13 +26,13 @@ export function validateRoute(handler: Handler) {
         }
       } catch (e) {
         res.status(401);
-        res.json("Unhautorized user");
+        res.json("Unauthorized user");
         return;
       }
       return handler(req, res, user);
     }
 
     res.status(401);
-    res.json("Unhautorized user");
+    res.json("Unauthorized user");
   };
 }
