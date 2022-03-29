@@ -7,5 +7,7 @@ export default validateRoute(async (req, res, user) => {
       userId: user.id,
     },
   });
-  res.json({ ...user, playlistsCount });
+  const me = { ...user, playlistsCount };
+  delete me.password;
+  res.json(me);
 });

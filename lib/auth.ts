@@ -36,3 +36,8 @@ export function validateRoute(handler: Handler) {
     res.json("Unauthorized user");
   };
 }
+
+export function validateToken(token: string) {
+  const user = jwt.verify(token, process.env.JWT_SECRET);
+  return user;
+}
