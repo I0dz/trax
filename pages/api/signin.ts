@@ -21,7 +21,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         id: user.id,
         time: Date.now(),
       },
-      "hello",
+      process.env.JWT_SECRET,
       { expiresIn: "8h" }
     );
 

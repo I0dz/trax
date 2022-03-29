@@ -3,6 +3,8 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 import prisma from "./prisma";
 
+require("dotenv").config();
+
 type Handler = (req: NextApiRequest, res: NextApiResponse, user: any) => any;
 
 export function validateRoute(handler: Handler) {
@@ -11,7 +13,8 @@ export function validateRoute(handler: Handler) {
 
     if (token) {
       let user;
-      const { id } = jwt.verify(token, "hello");
+      // @ts-ignore
+      const { id } = jwt.verify(token, process.env.JWT_SECRET);
 
       try {
         user = await prisma.user.findUnique({
