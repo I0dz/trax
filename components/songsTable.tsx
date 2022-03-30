@@ -5,8 +5,12 @@ import { Box } from "@chakra-ui/layout";
 import { IconButton, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 
 import { formatDate, formatDuration } from "../lib/formatters";
+import { Song, useStoreActions } from "../lib/store";
 
 export default function SongsTable({ songs }) {
+  const playSongs = useStoreActions(actions => actions.changeActiveSongs);
+  const setActiveSong = useStoreActions(actions => actions.changeActiveSong);
+
   return (
     <Box bg="transparent" color="white">
       <Box padding="10px" marginBottom="20px">
@@ -17,6 +21,7 @@ export default function SongsTable({ songs }) {
             colorScheme="green"
             size="lg"
             isRound
+            onClick={() => play()}
           />
         </Box>
         <Table variant="unstyled">
@@ -34,6 +39,7 @@ export default function SongsTable({ songs }) {
             {songs.map((song, i) => {
               return (
                 <Tr
+                  onClick={() => play(song)}
                   key={song.id}
                   cursor="pointer"
                   sx={{
@@ -55,4 +61,9 @@ export default function SongsTable({ songs }) {
       </Box>
     </Box>
   );
+
+  function play(activeSong?: Song) {
+    playSongs(songs);
+    setActiveSong(activeSong ?? songs[0]);
+  }
 }
