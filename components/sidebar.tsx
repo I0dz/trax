@@ -107,7 +107,17 @@ export default function Sidebar() {
         <Box overflowY="auto">
           <List spacing={2}>
             {playlists.map(playList => (
-              <ListItem paddingX="20px" fontSize="14px" key={playList.id}>
+              <ListItem
+                paddingX="20px"
+                fontSize="14px"
+                key={playList.id}
+                sx={{
+                  transition: "all .3s",
+                  "&:hover": {
+                    color: "white",
+                  },
+                }}
+              >
                 <LinkBox>
                   <NextLink
                     href={{
