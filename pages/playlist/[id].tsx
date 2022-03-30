@@ -24,7 +24,7 @@ export async function getServerSideProps({
   query,
   req,
 }: {
-  query: any;
+  query: { id: string };
   req: NextApiRequest;
 }) {
   try {
