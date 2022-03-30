@@ -41,7 +41,9 @@ export default function GradientLayout({
           <Text as="h1" fontSize="6xl">
             {title}
           </Text>
-          <Text fontSize="x-small">{description}</Text>
+          <Text fontSize="x-small" marginTop="5px">
+            {description}
+          </Text>
         </Flex>
       </Flex>
       <Box paddingY="50px">{children}</Box>

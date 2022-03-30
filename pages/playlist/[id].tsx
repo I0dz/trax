@@ -10,7 +10,7 @@ export default function playlist({ playlist }) {
     <GradientLayout
       color={getBackgroudColor(playlist.id)}
       title={playlist.name}
-      description={`${playlist.songs.lenght} songs`}
+      description={`${playlist.songs.length} songs`}
       subtitle="playlist"
       roundImage={false}
       image={`https://picsum.photos/400?random=${playlist.id}`}
