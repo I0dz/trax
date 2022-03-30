@@ -12,12 +12,10 @@ export function validateRoute(handler: Handler) {
     const token = req.cookies.TRAX_ACCESS_TOKEN;
 
     if (token) {
-      let user;
-      // @ts-ignore
-      const { id } = jwt.verify(token, process.env.JWT_SECRET);
+      const { id }: any = jwt.verify(token, process.env.JWT_SECRET);
 
       try {
-        user = await prisma.user.findUnique({
+        var user = await prisma.user.findUnique({
           where: { id },
         });
 

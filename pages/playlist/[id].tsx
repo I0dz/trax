@@ -27,11 +27,20 @@ export async function getServerSideProps({
   query: any;
   req: NextApiRequest;
 }) {
-  //@ts-ignore
-  const { id } = validateToken(req.cookies.TRAX_ACCESS_TOKEN);
+  try {
+    var user: any = validateToken(req.cookies.TRAX_ACCESS_TOKEN);
+  } catch (e) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/signin",
+      },
+    };
+  }
   const [playlist] = await prisma.playlist.findMany({
     where: {
       id: Number(query.id),
+      userId: user.id,
     },
     include: {
       songs: {
