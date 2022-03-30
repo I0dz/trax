@@ -1,6 +1,7 @@
 import { NextApiRequest } from "next";
 
 import GradientLayout from "../../components/gradientLayout";
+import SongsTable from "../../components/songsTable";
 import { validateToken } from "../../lib/auth";
 import prisma from "../../lib/prisma";
 
@@ -14,7 +15,7 @@ export default function playlist({ playlist }) {
       roundImage={false}
       image={`https://picsum.photos/400?random=${playlist.id}`}
     >
-      song table will come here
+      <SongsTable songs={playlist.songs} />
     </GradientLayout>
   );
 }
